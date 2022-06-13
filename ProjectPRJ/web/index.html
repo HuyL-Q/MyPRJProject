@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>FAP login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="CSS/login.css">
+    </head>
+    <body>
+      <div id="heder">
+          <button onclick="document.getElementById('id01').style.display='block'" style="width:100px; margin: 0 0 0 0">Login</button>
+      </div><br/>
+        <img style="width: 69%; height: 69%;" src="image/FPTbuilding.jpg" alt=""/>
+        <img style="width: 30%; height: 30%;" src="image/FPTstudent.jpg" alt=""/>
+<div id="id01" class="modal">
+    <form class="modal-content animate" action="AccountController" method="post"><!-- Chinh action -->
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="image/FPTlogo.jfif" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+        <label><b>I am</b><br/></label>
+      <select name="logger"id="selector">
+                    <option value="teacher"> Teacher</option>
+                    <option value="student"> Student</option>
+      </select>
+      <label for="uname"><b></br>Username</b></label>
+      <input type="text" placeholder="E-mail" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Password" name="psw" required>
+        
+      <button type="submit">Login</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+    </body>
+</html>
