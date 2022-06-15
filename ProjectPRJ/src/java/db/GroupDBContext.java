@@ -4,7 +4,7 @@
  */
 package db;
 
-import Object.Account;
+import Object.Group;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,15 +16,15 @@ import java.util.logging.Logger;
  *
  * @author Dell
  */
-public class AccountDBContext extends DBContext<Account>{
+public class GroupDBContext extends DBContext<Group>{
 
     @Override
-    public ArrayList<Account> list() {
+    public ArrayList<Group> list() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public Account getByID(String id, String Password, boolean status) {
-                try {
+    public ArrayList<Group> listByName() {
+        try {
             String sql = "SELECT Account,Password,Status FROM Account\n"
                     + "WHERE Account = ? AND [password] = ? AND Status = ?";
             
@@ -47,24 +47,23 @@ public class AccountDBContext extends DBContext<Account>{
         }
         return null;
     }
-
     @Override
-    public void insert(Account model) {
+    public Group get(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void update(Account model) {
+    public void insert(Group model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void delete(Account model) {
+    public void update(Group model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Account get(int id) {
+    public void delete(Group model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

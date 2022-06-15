@@ -8,33 +8,33 @@ package Object;
  *
  * @author Dell
  */
-public class Account<T> {
-    private String Account;
-    private String Password;
-    private boolean Status;
+public class Account {
+    private String account;
+    private String password;
+    private boolean status;
 
     public String getAccount() {
-        return Account;
+        return account;
     }
 
     public void setAccount(String Account) {
-        this.Account = Account;
+        this.account = Account;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String Password) {
-        this.Password = Password;
+        this.password = Password;
     }
 
     public boolean isStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(boolean Status) {
-        this.Status = Status;
+        this.status = Status;
     }
     
 }
