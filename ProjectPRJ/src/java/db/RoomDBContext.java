@@ -4,11 +4,7 @@
  */
 package db;
 
-import Object.Course;
-import Object.Group;
 import Object.Room;
-import Object.Slot;
-import Object.Teacher;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,28 +16,21 @@ import java.util.logging.Logger;
  *
  * @author Dell
  */
-public class GroupDBContext extends DBContext<Group> {
+public class RoomDBContext extends DBContext<Room>{
 
     @Override
-    public ArrayList<Group> list() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public ArrayList<Group> listByName(int id) {//return student group list
-        ArrayList ar = new ArrayList<Group>();
+    public ArrayList<Room> list() {
+        ArrayList ar = new ArrayList<Room>();
         try {
-            String sql = "SELECT C.ClassID, SIC.Date, C.CourseID, C.RoomID, C.SlotID FROM [Class] C, Student S, StudentInClass SIC\n"
-                    + "where S.StudentID = SIC.StudentID AND SIC.ClassID = C.ClassID AND S.StudentID= ?";
+            String sql = "select RoomID, RoomName from Room";
+
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1, String.valueOf(id));
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                Group Gr = new Group();
-                Gr.setRoom(rs.getInt("RoomID"));
-                Gr.setGroupid(rs.getInt("ClassID"));
-                Gr.setCourseid(rs.getString("CourseID"));
-                Gr.setSlot(rs.getInt("SlotID"));
-                ar.add(Gr);
+                Room room = new Room();
+                room.setRoomID(rs.getInt("RoomID"));
+                room.setRoomName("RoomName");
+                ar.add(room);
             }
             return ar;
         } catch (SQLException ex) {
@@ -49,25 +38,39 @@ public class GroupDBContext extends DBContext<Group> {
         }
         return null;
     }
+
+    @Override
+    public Room get(int id) {
+        try {
+            String sql = "select RoomID, RoomName from Room where RoomID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, String.valueOf(id));
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                Room room = new Room();
+                room.setRoomID(rs.getInt("RoomID"));
+                room.setRoomName("RoomName");
+            return room;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public void insert(Room model) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void update(Room model) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void delete(Room model) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
-    @Override
-    public Group get(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void insert(Group model) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void update(Group model) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void delete(Group model) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }

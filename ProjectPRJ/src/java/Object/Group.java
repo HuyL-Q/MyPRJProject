@@ -11,51 +11,51 @@ import java.util.ArrayList;
  * @author Dell
  */
 public class Group {
-    private int GroupID;
-    private String CourseID;
-    private String TeacherID;
-    private int RoomID;
-    private int SlotID;
+    private int groupid;
+    private String courseid;
+    private int teacher;
+    private int room;
+    private int slot;
     private ArrayList StudentAr;
 
-    public int getGroupID() {
-        return GroupID;
+    public int getGroupid() {
+        return groupid;
     }
 
-    public void setGroupID(int GroupID) {
-        this.GroupID = GroupID;
+    public void setGroupid(int groupid) {
+        this.groupid = groupid;
     }
 
-    public String getCourseID() {
-        return CourseID;
+    public String getCourseid() {
+        return courseid;
     }
 
-    public void setCourseID(String CourseID) {
-        this.CourseID = CourseID;
+    public void setCourseid(String Courseid) {
+        this.courseid = Courseid;
     }
 
-    public String getTeacherID() {
-        return TeacherID;
+    public int getTeacher() {
+        return teacher;
     }
 
-    public void setTeacherID(String TeacherID) {
-        this.TeacherID = TeacherID;
+    public void setTeacher(int teacher) {
+        this.teacher = teacher;
     }
 
-    public int getRoomID() {
-        return RoomID;
+    public int getRoom() {
+        return room;
     }
 
-    public void setRoomID(int RoomID) {
-        this.RoomID = RoomID;
+    public void setRoom(int room) {
+        this.room = room;
     }
 
-    public int getSlotID() {
-        return SlotID;
+    public int getSlot() {
+        return slot;
     }
 
-    public void setSlotID(int SlotID) {
-        this.SlotID = SlotID;
+    public void setSlot(int slot) {
+        this.slot = slot;
     }
 
     public ArrayList getStudentAr() {
@@ -65,6 +65,7 @@ public class Group {
     public void setStudentAr(ArrayList StudentAr) {
         this.StudentAr = StudentAr;
     }
-    
+
+   
     
 }

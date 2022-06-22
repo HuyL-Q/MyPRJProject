@@ -1,0 +1,9 @@
+1. Done
+Tạo 1 hàm trả về thông tin học sinh (liên kết giữa bảng account và student)
+2. Done
+Lỗi nhập sai role mà vẫn đăng nhập được.
+3.
+Tạo schedule (nhận vào mã học sinh, trả về lịch học sinh trong từng tuần).
+4. Done
+Null pointer khi nhập sai thông tin học sinh.
+5. session grd chưa được up lên

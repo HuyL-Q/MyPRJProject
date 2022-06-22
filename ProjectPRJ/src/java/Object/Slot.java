@@ -11,32 +11,33 @@ import java.sql.Time;
  * @author Dell
  */
 public class Slot {
-    private int SlotID;
-    private Time StartTime;
-    private Time EndTime;
+    private int slotid;
+    private Time starttime;
+    private Time endtime;
 
-    public int getSlotID() {
-        return SlotID;
+    public int getSlotid() {
+        return slotid;
     }
 
-    public void setSlotID(int SlotID) {
-        this.SlotID = SlotID;
+    public void setSlotid(int slotid) {
+        this.slotid = slotid;
     }
 
-    public Time getStartTime() {
-        return StartTime;
+    public Time getStarttime() {
+        return starttime;
     }
 
-    public void setStartTime(Time StartTime) {
-        this.StartTime = StartTime;
+    public void setStarttime(Time starttime) {
+        this.starttime = starttime;
     }
 
-    public Time getEndTime() {
-        return EndTime;
+    public Time getEndtime() {
+        return endtime;
     }
 
-    public void setEndTime(Time EndTime) {
-        this.EndTime = EndTime;
+    public void setEndtime(Time endtime) {
+        this.endtime = endtime;
     }
+
     
 }

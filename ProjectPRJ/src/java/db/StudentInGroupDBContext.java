@@ -3,32 +3,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package db;
-
-import Object.Course;
 import Object.Group;
-import Object.Room;
-import Object.Slot;
-import Object.Teacher;
+import Object.StudentInGroup;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
  *
  * @author Dell
  */
-public class GroupDBContext extends DBContext<Group> {
+public class StudentInGroupDBContext extends DBContext<StudentInGroup>{
 
+    
+//    public static void main(String[] args) {
+//        StudentInGroupDBContext st = new StudentInGroupDBContext();
+//        ArrayList<StudentInGroup> ar = st.list(2);
+//        for (StudentInGroup obj : ar) {
+//            System.out.println(obj);
+//        }
+//    }
     @Override
-    public ArrayList<Group> list() {
+    public ArrayList<StudentInGroup> list() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    public ArrayList<Group> listByName(int id) {//return student group list
-        ArrayList ar = new ArrayList<Group>();
+    public ArrayList<StudentInGroup> list(int id) {
+        ArrayList ar = new ArrayList<StudentInGroup>();
         try {
             String sql = "SELECT C.ClassID, SIC.Date, C.CourseID, C.RoomID, C.SlotID FROM [Class] C, Student S, StudentInClass SIC\n"
                     + "where S.StudentID = SIC.StudentID AND SIC.ClassID = C.ClassID AND S.StudentID= ?";
@@ -41,7 +43,11 @@ public class GroupDBContext extends DBContext<Group> {
                 Gr.setGroupid(rs.getInt("ClassID"));
                 Gr.setCourseid(rs.getString("CourseID"));
                 Gr.setSlot(rs.getInt("SlotID"));
-                ar.add(Gr);
+                StudentInGroup sic = new StudentInGroup();
+                sic.setGroup(Gr);
+                sic.setDate(rs.getDate("Date"));
+                sic.converter();
+                ar.add(sic);
             }
             return ar;
         } catch (SQLException ex) {
@@ -49,25 +55,25 @@ public class GroupDBContext extends DBContext<Group> {
         }
         return null;
     }
+
+    @Override
+    public StudentInGroup get(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void insert(StudentInGroup model) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void update(StudentInGroup model) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void delete(StudentInGroup model) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
-    @Override
-    public Group get(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void insert(Group model) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void update(Group model) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void delete(Group model) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }

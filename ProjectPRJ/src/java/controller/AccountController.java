@@ -6,13 +6,20 @@
 package controller;
 
 import Object.Account;
+import Object.StudentInGroup;
+import Object.Slot;
+import Object.Student;
 import db.AccountDBContext;
+import db.StudentInGroupDBContext;
+import db.SlotDBContext;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 /**
  *
@@ -58,13 +65,23 @@ public class AccountController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         AccountDBContext dbc = new AccountDBContext();
         String logger = request.getParameter("logger");
-        boolean log;
         String uname = request.getParameter("uname");
         String password = request.getParameter("psw");
-        if(logger=="teacher")log=false;
-        else log=true;
+        boolean log = !logger.equals("teacher");
+        Student stu = dbc.getAcReturnStu(uname, password, log);
         Account ac = dbc.getByID(uname, password, log);
-        request.setAttribute("ac", ac);
+        if(stu!=null){
+        request.setAttribute("stuname", stu.getStudentName());
+        HttpSession session = request.getSession();
+        session.setAttribute("stuid", stu.getStudentID());
+        StudentInGroupDBContext grd = new StudentInGroupDBContext();
+        ArrayList<StudentInGroup> grdArray = grd.list(stu.getStudentID());
+        session.setAttribute("grd",grdArray);
+        session.setAttribute("ac", ac);
+        SlotDBContext g = new SlotDBContext();
+        ArrayList<Slot> ar = g.list();
+        session.setAttribute("slt", ar);
+        }
         request.getRequestDispatcher("view/login.jsp").forward(request, response);
     }
 

@@ -9,33 +9,32 @@ package Object;
  * @author Dell
  */
 public class Course {
-    private String CourseID;
-    private String CourseName;
-    private int NumberOfSlot;
+    private String Courseid;
+    private String Coursename;
+    private int NumberOfslot;
 
-    public String getCourseID() {
-        return CourseID;
+    public String getCourseid() {
+        return Courseid;
     }
 
-    public void setCourseID(String CourseID) {
-        this.CourseID = CourseID;
+    public void setCourseid(String Courseid) {
+        this.Courseid = Courseid;
     }
 
-    public String getCourseName() {
-        return CourseName;
+    public String getCoursename() {
+        return Coursename;
     }
 
-    public void setCourseName(String CourseName) {
-        this.CourseName = CourseName;
+    public void setCoursename(String Coursename) {
+        this.Coursename = Coursename;
     }
 
-    public int getNumberOfSlot() {
-        return NumberOfSlot;
+    public int getNumberOfslot() {
+        return NumberOfslot;
     }
 
-    public void setNumberOfSlot(int NumberOfSlot) {
-        this.NumberOfSlot = NumberOfSlot;
+    public void setNumberOfslot(int NumberOfslot) {
+        this.NumberOfslot = NumberOfslot;
     }
-    
-    
+
 }

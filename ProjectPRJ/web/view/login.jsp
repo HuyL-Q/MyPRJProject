@@ -19,19 +19,23 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     </head>
     <body>
-        <c:if test="${requestScope.ac eq null}">
+        <c:if test="${sessionScope.stuid eq null}">
             <h1>Login Fail</h1>
         </c:if>
-        <c:if test="${requestScope.ac ne null}">
-            <div id="headers">
-                <div class="col-md-6 offset-md-9">
-                    Hello, ${requestScope.ac.account}
+        <c:if test="${sessionScope.stuid ne null}">
+            <div class="row justify-content-between">
+                <div class="col-5" style="font-size: 70px">
+                    🌈FPT大学🏳️‍🌈
+                </div>
+                <div class="col-3">
+                    <div style="text-align: center;"><br/>🎶❤🏫🎶</div>
+                    Hello, ${requestScope.stuname}. 
                     <a href="index.html">Logout?</a>
                 </div>
             </div>
             <div id="container">
                 <!--js choose year and date here--> 
-                
+
                 <!--here end-->
                 <table class="table table-striped">
                     <thead>
@@ -47,23 +51,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
+                        <c:forEach items= "${sessionScope.slt}" var="d">
+                            <tr>
+                                <th scope="row" value="${d.slotid}">${d.slotid}</th>
+                                <c:forEach var="i" begin="1" end="7">
+                                <td><c:forEach items="${sessionScope.grd}" var="e"><c:if test="${e.dayinweek eq i && e.group.slot eq d.slotid}">${e.group.courseid}</c:if></c:forEach></td>
+                                </c:forEach>
+                            </tr>
+                        </c:forEach>
                         </tr>
                     </tbody>
                 </table>

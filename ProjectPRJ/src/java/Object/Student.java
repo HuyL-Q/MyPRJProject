@@ -9,26 +9,26 @@ package Object;
  * @author Dell
  */
 public class Student {
-    private int StudentID;
-    private String StudentName;
+    private int studentid;
+    private String studentname;
     private boolean Gender;
     private Account Account;
     private int AttendaceCount;
 
     public int getStudentID() {
-        return StudentID;
+        return studentid;
     }
 
     public void setStudentID(int StudentID) {
-        this.StudentID = StudentID;
+        this.studentid = StudentID;
     }
 
     public String getStudentName() {
-        return StudentName;
+        return studentname;
     }
 
     public void setStudentName(String StudentName) {
-        this.StudentName = StudentName;
+        this.studentname = StudentName;
     }
 
     public boolean isGender() {
