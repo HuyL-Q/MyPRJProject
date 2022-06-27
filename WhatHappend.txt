@@ -6,4 +6,9 @@ Lỗi nhập sai role mà vẫn đăng nhập được.
 Tạo schedule (nhận vào mã học sinh, trả về lịch học sinh trong từng tuần).
 4. Done
 Null pointer khi nhập sai thông tin học sinh.
-5. session grd chưa được up lên
+5. Done
+session grd chưa được up lên
+6. 
+Mock Up thiếu, cần thêm 1 cửa sổ cho học sinh và giáo viên hiển thị thông tin môn học
+7.
+Phần dữ liệu review lên jsp schedual cắt khoảng bằng javascript

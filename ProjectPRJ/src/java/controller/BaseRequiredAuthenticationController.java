@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public abstract class BaseRequiredAuthenticationController extends HttpServlet {
 
     private boolean isAuthenticated(HttpServletRequest request) {
-        Account account = (Account) request.getSession().getAttribute("account");
+        Account account = (Account) request.getSession().getAttribute("ac");
         return account != null;
     }
 

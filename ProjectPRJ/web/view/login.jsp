@@ -35,19 +35,22 @@
             </div>
             <div id="container">
                 <!--js choose year and date here--> 
-
+                <form action="ScheduleController" id="frmSearch" method="POST">
+                    <input type="hidden" name="accountID" value="${sessionScope.stuid}"><!-- send accountid to servlet -->
+                    <input type="date" name="did" onchange="document.getElementById('frmSearch').submit();"><!-- send date that user want to check -->
+            </form>
                 <!--here end-->
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Slot</th>
+                            <th scope="col">Sunday</th>
                             <th scope="col">Monday</th>
                             <th scope="col">Tuesday</th>
                             <th scope="col">Wednesday</th>
                             <th scope="col">Thursday</th>
                             <th scope="col">Friday</th>
                             <th scope="col">Saturday</th>
-                            <th scope="col">Sunday</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,7 +58,10 @@
                             <tr>
                                 <th scope="row" value="${d.slotid}">${d.slotid}</th>
                                 <c:forEach var="i" begin="1" end="7">
-                                <td><c:forEach items="${sessionScope.grd}" var="e"><c:if test="${e.dayinweek eq i && e.group.slot eq d.slotid}">${e.group.courseid}</c:if></c:forEach></td>
+                                <td><c:forEach items="${sessionScope.grd}" var="e">
+                                        <c:if test="${e.dayinweek eq i && e.group.slot eq d.slotid}">
+                                            ${e.group.courseid}
+                                        </c:if></c:forEach></td>
                                 </c:forEach>
                             </tr>
                         </c:forEach>
