@@ -1,0 +1,9 @@
+Main screen for both student and teacher login.
+SQL requirement:
+Slot
+Account
+Student
+StudentInGroup
+Teacher
+Course
+Room

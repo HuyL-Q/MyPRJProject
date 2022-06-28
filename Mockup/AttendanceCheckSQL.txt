@@ -1,0 +1,6 @@
+Teacher can take attendance and leave note for student in this screen
+SQL requirement:
+Attendance
+Student
+Teacher
+StudentInClass

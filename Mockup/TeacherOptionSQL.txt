@@ -1,0 +1,4 @@
+Screen to show teacher option including Attendance and Student Grade
+Course
+Name
+Course name
