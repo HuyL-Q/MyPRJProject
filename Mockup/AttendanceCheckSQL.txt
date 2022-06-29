@@ -4,3 +4,8 @@ Attendance
 Student
 Teacher
 StudentInClass
+Class
+
+select S.StudentName, T.TeacherName,A.Status,a.Note from Student S, Teacher T, StudentInClass SIC, Class C, Attendance A
+where S.StudentID=SIC.StudentID and SIC.ClassID=C.ClassID and C.ClassID = T.TeacherID and A.StudentInClassID = SIC.StudenInClassID
+and t.TeacherName= ? and C.ClassID=?

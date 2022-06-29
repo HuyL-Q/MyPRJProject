@@ -7,3 +7,23 @@ StudentInGroup
 Teacher
 Course
 Room
+SELECT C.ClassID, SIC.Date, C.CourseID, C.RoomID, C.SlotID FROM [Class] C, Student S, StudentInClass SIC
+where S.StudentID = SIC.StudentID AND SIC.ClassID = C.ClassID AND S.StudentID= ?
+
+
+SELECT Account,Password,Status FROM Account
+WHERE Account = ? AND [password] = ? AND Status = ?
+
+
+select CourseID, CourseName, NumberOfSlot from Course
+where CourseID = ?
+
+
+select RoomID, RoomName from Room
+
+
+select SlotID, StartTime, EndTime from Slot
+
+
+SELECT C.ClassID, SIC.Date, C.CourseID, C.RoomID, C.SlotID FROM [Class] C, Student S, StudentInClass SIC
+where S.StudentID = SIC.StudentID AND SIC.ClassID = C.ClassID AND S.StudentID= ?
