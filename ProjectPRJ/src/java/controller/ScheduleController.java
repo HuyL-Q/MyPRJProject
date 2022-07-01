@@ -5,13 +5,19 @@
 
 package controller;
 
+
+import Object.StudentInGroup;
+
+import db.StudentInGroupDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -68,7 +74,13 @@ public class ScheduleController extends BaseRequiredAuthenticationController {
     @Override
     protected void processPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
+        String acID = request.getParameter("accountID");
+        Date date = Date.valueOf(request.getParameter("date"));
+        StudentInGroupDBContext gdb = new StudentInGroupDBContext();
+        ArrayList<StudentInGroup> ArrayGroup = gdb.list(Integer.parseInt(acID), date);
+        request.setAttribute("grd", ArrayGroup);
+        request.setAttribute("date", date);
+        request.getRequestDispatcher("view/login.jsp").forward(request, response);
     }
 
     /** 

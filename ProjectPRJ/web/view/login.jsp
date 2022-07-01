@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-3">
                     <div style="text-align: center;"><br/>🎶❤🏫🎶</div>
-                    Hello, ${requestScope.stuname}. 
+                    Hello, ${sessionScope.stuname}. 
                     <a href="index.html">Logout?</a>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <!--js choose year and date here--> 
                 <form action="ScheduleController" id="frmSearch" method="POST">
                     <input type="hidden" name="accountID" value="${sessionScope.stuid}"><!-- send accountid to servlet -->
-                    <input type="date" name="did" onchange="document.getElementById('frmSearch').submit();"><!-- send date that user want to check -->
+                    <input type="date" name="date" value="${requestScope.date}" onchange="document.getElementById('frmSearch').submit();"><!-- send date that user want to check -->
             </form>
                 <!--here end-->
                 <table class="table table-striped">
@@ -58,7 +58,7 @@
                             <tr>
                                 <th scope="row" value="${d.slotid}">${d.slotid}</th>
                                 <c:forEach var="i" begin="1" end="7">
-                                <td><c:forEach items="${sessionScope.grd}" var="e">
+                                <td><c:forEach items="${requestScope.grd}" var="e">
                                         <c:if test="${e.dayinweek eq i && e.group.slot eq d.slotid}">
                                             ${e.group.courseid}
                                         </c:if></c:forEach></td>
