@@ -73,6 +73,9 @@ public class AccountController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         AccountDBContext dbc = new AccountDBContext();
         String logger = request.getParameter("logger");
+        if(logger.equals("teacher")){
+            request.getRequestDispatcher("TeacherLogin.java").forward(request, response);
+        }
         String uname = request.getParameter("uname");
         String password = request.getParameter("psw");
         boolean log = !logger.equals("teacher");

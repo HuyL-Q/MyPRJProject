@@ -60,7 +60,7 @@
                                 <c:forEach var="i" begin="1" end="7">
                                 <td><c:forEach items="${requestScope.grd}" var="e">
                                         <c:if test="${e.dayinweek eq i && e.group.slot eq d.slotid}">
-                                            ${e.group.courseid}
+                                            <a href="">${e.group.courseid}</a>
                                         </c:if></c:forEach></td>
                                 </c:forEach>
                             </tr>
