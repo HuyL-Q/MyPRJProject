@@ -15,21 +15,23 @@ public class Student {
     private Account Account;
     private int AttendaceCount;
 
-    public int getStudentID() {
+    public int getStudentid() {
         return studentid;
     }
 
-    public void setStudentID(int StudentID) {
-        this.studentid = StudentID;
+    public void setStudentid(int studentid) {
+        this.studentid = studentid;
     }
 
-    public String getStudentName() {
+    public String getStudentname() {
         return studentname;
     }
 
-    public void setStudentName(String StudentName) {
-        this.studentname = StudentName;
+    public void setStudentname(String studentname) {
+        this.studentname = studentname;
     }
+
+    
 
     public boolean isGender() {
         return Gender;

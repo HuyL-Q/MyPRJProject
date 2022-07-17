@@ -9,24 +9,24 @@ package Object;
  * @author Dell
  */
 public class Course {
-    private String Courseid;
-    private String Coursename;
+    private String courseid;
+    private String coursename;
     private int NumberOfslot;
 
     public String getCourseid() {
-        return Courseid;
+        return courseid;
     }
 
     public void setCourseid(String Courseid) {
-        this.Courseid = Courseid;
+        this.courseid = Courseid;
     }
 
     public String getCoursename() {
-        return Coursename;
+        return coursename;
     }
 
     public void setCoursename(String Coursename) {
-        this.Coursename = Coursename;
+        this.coursename = Coursename;
     }
 
     public int getNumberOfslot() {

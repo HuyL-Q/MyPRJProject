@@ -4,9 +4,17 @@
         <servlet-name>AccountController</servlet-name>
         <servlet-class>controller.AccountController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SaveData</servlet-name>
+        <servlet-class>controller.SaveData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AccountController</servlet-name>
         <url-pattern>/AccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveData</servlet-name>
+        <url-pattern>/SaveData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

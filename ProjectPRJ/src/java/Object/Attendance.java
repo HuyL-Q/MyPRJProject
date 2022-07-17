@@ -9,33 +9,38 @@ package Object;
  * @author Dell
  */
 public class Attendance {
-    private int StudentInClassID;
-    private boolean Status;
-    private String Note;
+    private int studentinclassid;
+    private boolean status;
+    private String note;
 
-    public int getStudentInClassID() {
-        return StudentInClassID;
+    public Attendance() {
     }
 
-    public void setStudentInClassID(int StudentInClassID) {
-        this.StudentInClassID = StudentInClassID;
+    
+    public int getStudentinclassid() {
+        return studentinclassid;
+    }
+
+    public void setStudentinclassid(int studentinclassid) {
+        this.studentinclassid = studentinclassid;
     }
 
     public boolean isStatus() {
-        return Status;
+        return status;
     }
 
-    public void setStatus(boolean Status) {
-        this.Status = Status;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getNote() {
-        return Note;
+        return note;
     }
 
-    public void setNote(String Note) {
-        this.Note = Note;
+    public void setNote(String note) {
+        this.note = note;
     }
+
     
     
 }

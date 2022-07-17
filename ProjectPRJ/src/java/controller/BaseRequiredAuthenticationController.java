@@ -5,10 +5,10 @@
 package controller;
 
 import Object.Account;
+import Object.Feature;
+import Object.Role;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,10 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public abstract class BaseRequiredAuthenticationController extends HttpServlet {
 
-    private boolean isAuthenticated(HttpServletRequest request) {
-        Account account = (Account) request.getSession().getAttribute("ac");
-        return account != null;
-    }
+    
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -34,6 +31,24 @@ public abstract class BaseRequiredAuthenticationController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    private boolean isAuthenticated(HttpServletRequest request) {
+        Account account = (Account) request.getSession().getAttribute("ac");
+        if(account ==null)
+            return false;
+        else
+        {
+            String servletPath = request.getServletPath();
+            for (Role role : account.getRoles()) {
+                for (Feature feature : role.getFeatures()) {
+                    if(feature.getUrl().equals(servletPath))
+                        return true;
+                }
+            }
+            return false;
+        }
+    }
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

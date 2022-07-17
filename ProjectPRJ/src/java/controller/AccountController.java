@@ -5,25 +5,16 @@
 package controller;
 
 import Object.Account;
-import Object.Group;
-import Object.StudentInGroup;
-import Object.Slot;
-import Object.Student;
+import Object.Role;
 import db.AccountDBContext;
-import db.GroupDBContext;
-import db.StudentInGroupDBContext;
-import db.SlotDBContext;
+import java.util.ArrayList;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  *
@@ -72,34 +63,27 @@ public class AccountController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         AccountDBContext dbc = new AccountDBContext();
-        String logger = request.getParameter("logger");
-        if(logger.equals("teacher")){
-            request.getRequestDispatcher("TeacherLogin.java").forward(request, response);
-        }
         String uname = request.getParameter("uname");
         String password = request.getParameter("psw");
-        boolean log = !logger.equals("teacher");
-        Student stu = dbc.getAcReturnStu(uname, password, log);
-        Account ac = dbc.getByID(uname, password, log);
+        String logger = request.getParameter("logger");
         HttpSession session = request.getSession();
-        if (stu != null) {
-            session.setAttribute("stuname", stu.getStudentName());
-            session.setAttribute("stuid", stu.getStudentID());
-            StudentInGroupDBContext grd = new StudentInGroupDBContext();
-            Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = Date.valueOf(formatter.format(calendar.getTime()));
-            ArrayList<StudentInGroup> grdArray = grd.list(stu.getStudentID(), date);
-            Calendar cal1 = Calendar.getInstance();
-            Date date1 = Date.valueOf(formatter.format(cal1.getTime()));
-            request.setAttribute("date", date1);
-            session.setAttribute("grd", grdArray);
+        Account ac = dbc.getByID(uname, password, !logger.equals("teacher"));
+        if(ac!=null){
+        ArrayList ar = new ArrayList<Role>();
+        if (logger.equals("teacher")) {
+            ar.add(dbc.getRole(0));
+            ac.setRoles(ar);
             session.setAttribute("ac", ac);
-            SlotDBContext g = new SlotDBContext();
-            ArrayList<Slot> ar = g.list();
-            session.setAttribute("slt", ar);
+            request.getRequestDispatcher("/TeacherLogin").forward(request, response);
+        } else {
+            ar.add(dbc.getRole(1));
+            ac.setRoles(ar);
+            session.setAttribute("ac", ac);
+            request.getRequestDispatcher("/StudentLogin").forward(request, response);
+        }}else
+        {
+            response.getWriter().println("access denied!");
         }
-        request.getRequestDispatcher("view/login.jsp").forward(request, response);
     }
 
     /**

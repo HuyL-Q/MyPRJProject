@@ -32,10 +32,10 @@ public class CourseDBContext extends DBContext<Course> {
             stm.setString(1, String.valueOf(id));
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {
-                Course room = new Course();
-                room.setCourseid(rs.getString("CourseID"));
-                room.setCoursename(rs.getString("RoomName"));
-                return room;
+                Course co = new Course();
+                co.setCourseid(rs.getString("CourseID"));
+                co.setCoursename(rs.getString("CourseName"));
+                return co;
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);

@@ -59,9 +59,10 @@
                                 <th scope="row" value="${d.slotid}">${d.slotid}</th>
                                 <c:forEach var="i" begin="1" end="7">
                                 <td><c:forEach items="${requestScope.grd}" var="e">
-                                        <c:if test="${e.dayinweek eq i && e.group.slot eq d.slotid}">
-                                            <a href="">${e.group.courseid}</a>
-                                        </c:if></c:forEach></td>
+                                        <c:if test="${e.dayinweek eq i && e.group.slot.slotid eq d.slotid}">
+                                            <a href="">${e.group.course.courseid}</a>
+                                        </c:if>
+                                    </c:forEach></td>
                                 </c:forEach>
                             </tr>
                         </c:forEach>

@@ -12,11 +12,11 @@ import java.util.ArrayList;
  */
 public class Group {
     private int groupid;
-    private String courseid;
-    private int teacher;
-    private int room;
-    private int slot;
-    private ArrayList StudentAr;
+    private Course course;
+    private Teacher teacher;
+    private Room room;
+    private Slot slot;
+    private ArrayList<StudentInGroup> studentar;
 
     public int getGroupid() {
         return groupid;
@@ -26,46 +26,44 @@ public class Group {
         this.groupid = groupid;
     }
 
-    public String getCourseid() {
-        return courseid;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourseid(String Courseid) {
-        this.courseid = Courseid;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public int getTeacher() {
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(int teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
-    public int getRoom() {
+    public Room getRoom() {
         return room;
     }
 
-    public void setRoom(int room) {
+    public void setRoom(Room room) {
         this.room = room;
     }
 
-    public int getSlot() {
+    public Slot getSlot() {
         return slot;
     }
 
-    public void setSlot(int slot) {
+    public void setSlot(Slot slot) {
         this.slot = slot;
     }
 
-    public ArrayList getStudentAr() {
-        return StudentAr;
+    public ArrayList<StudentInGroup> getStudentar() {
+        return studentar;
     }
 
-    public void setStudentAr(ArrayList StudentAr) {
-        this.StudentAr = StudentAr;
+    public void setStudentar(ArrayList<StudentInGroup> studentar) {
+        this.studentar = studentar;
     }
-
-   
     
 }

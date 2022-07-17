@@ -4,6 +4,8 @@
  */
 package Object;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Dell
@@ -12,6 +14,7 @@ public class Account {
     private String account;
     private String password;
     private boolean status;
+    private ArrayList<Role> roles = new ArrayList<>();
 
     public String getAccount() {
         return account;
@@ -36,5 +39,14 @@ public class Account {
     public void setStatus(boolean Status) {
         this.status = Status;
     }
+
+    public ArrayList<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(ArrayList<Role> roles) {
+        this.roles = roles;
+    }
+
     
 }

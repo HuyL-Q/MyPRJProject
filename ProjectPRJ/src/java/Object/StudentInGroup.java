@@ -12,19 +12,21 @@ import java.util.Calendar;
  * @author Dell
  */
 public class StudentInGroup {
-    private int studentid;
+    private Student student;
     private Group group;
     private Date date;
     private int studentinclassid;
+    private Attendance attendance;
     private int dayinweek;
+
+    public Attendance getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(Attendance attendance) {
+        this.attendance = attendance;
+    }
     
-//    public static void main(String[] args) {
-//        StudentInGroup s = new StudentInGroup();
-//        Date date=Date.valueOf("2022-6-22");
-//        s.setDate(date);
-//        System.out.println(date);
-//        s.converter();
-//    }
     public void converter(){
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -40,13 +42,15 @@ public class StudentInGroup {
         this.dayinweek = dayinweek;
     }
 
-    public int getStudentid() {
-        return studentid;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentid(int studentid) {
-        this.studentid = studentid;
+    public void setStudent(Student student) {
+        this.student = student;
     }
+
+    
 
     public Group getGroup() {
         return group;
